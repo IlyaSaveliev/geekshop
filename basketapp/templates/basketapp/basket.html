@@ -1,0 +1,13 @@
+{% extends 'basketapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="header clearfix">
+        <a href="{% url 'main' %}" class="basket_logo"></a>
+    </div>
+
+    <div class="basket_list">
+    {% include 'basketapp/includes/inc_basket_list.html' %}
+    </div>
+{% endblock %}

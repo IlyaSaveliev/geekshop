@@ -1,0 +1,70 @@
+<ul class="menu">
+    <li>
+        <a href="{% url 'main' %}" {% if request.resolver_match.url_name == 'main' %} class="active"{% endif %}>
+            домой
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'products:products' %}" {% if request.resolver_match.namespace == 'products' %}
+           class="active"{% endif %}>
+            продукты
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %} class="active"{% endif %}>
+            контакты
+        </a>
+    </li>
+
+    {% if user.is_authenticated %}
+        {#        <li><a href="{% url 'auth:edit' %}">#}
+        {#            {{ user.first_name|default:'Пользователь' }}#}
+        {#        </a>#}
+        {#        </li>#}
+        <li>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="" data-toggle="dropdown">
+                    {{ user.first_name|default:'Пользователь' }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'authapp:edit' %}">
+                            профиль
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordersapp:orders_list' %}">
+                            заказы
+                        </a></li>
+                </ul>
+            </div>
+        </li>
+        {% if user.is_superuser %}
+            <li>
+                <a href="{% url 'adminapp:users' %}">
+                    Админка
+                </a>
+            </li>
+        {% endif %}
+        <li><a href="{% url 'auth:logout' %}">
+            выход
+        </a>
+        </li>
+    {% else %}
+        <li><a href="{% url 'auth:login' %}">
+            вход
+        </a>
+        </li>
+    {% endif %}
+</ul>
+
+<a href="#" class="search"></a>
+<a href="{% url 'basket:view' %}" class="basket" style="padding: 0px">
+    <div class="span">
+        {% if basket %}
+            <div>{{ basket.0.total_cost|floatformat:0 }} руб.</div>
+            <div>({{ basket.0.total_quantity }} шт.)</div>
+        {% endif %}
+    </div>
+</a>

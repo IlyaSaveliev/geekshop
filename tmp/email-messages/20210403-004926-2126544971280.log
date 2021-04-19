@@ -1,0 +1,13 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0J/QvtC00YLQstC10YDQttC00LXQvdC40LUg0YPRh9C10YLQvdC+0Lkg0LfQsNC/?=
+ =?utf-8?b?0LjRgdC4dGVzdERqYW5nb0BkYi5sb2NhbA==?=
+From: django@gb.local
+To: testDjango@db.local
+Date: Fri, 02 Apr 2021 21:49:26 -0000
+Message-ID: <161740016669.11292.3711780704897986346@S-Ilya>
+
+ССылка для активации: http://localhost:8000/auth/verify/testDjango@db.local/f8fb3a446ac5d85e390639450e97f321a34091f9/
+-------------------------------------------------------------------------------
