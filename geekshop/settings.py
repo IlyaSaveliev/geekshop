@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'j#!c%&_56-!_*s+f+roox!46v+1@nrt)(#a!h)4&6e4)!5=jw2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 # ALLOWED_HOSTS = ['127.0.0.1']
 
-DEBUG = False
+# DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -86,7 +86,7 @@ if DEBUG:
         'debug_toolbar.panels.profiling.ProfilingPanel',
         'template_profiler_panel.panels.template.TemplateProfilerPanel',
     ]
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    
 
 ROOT_URLCONF = 'geekshop.urls'
 
@@ -162,9 +162,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
+# STATICFILES_DIRS = (
+#     BASE_DIR / 'static',
+# )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
