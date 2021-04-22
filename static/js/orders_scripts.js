@@ -73,7 +73,7 @@ window.onload = function () {
                 url: "/order/product/" + orderitem_product_pk + "/price/",
                 success: function (data) {
                     if (data.price) {
-                        price.arr[orderitem_num] = parseFloat(data.price);
+                        price_arr[orderitem_num] = parseFloat(data.price);
                         if (isNaN(quantity_arr[orderitem_num])) {
                             quantity_arr[orderitem_num] = 0;
                         }
