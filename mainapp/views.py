@@ -24,7 +24,7 @@ def get_hot_product():
     return random.sample(list(products_list), 1)[0]
 
 def get_same_products(hot_product):
-    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk).seleck_related()[:3]
     return same_products
 
 
