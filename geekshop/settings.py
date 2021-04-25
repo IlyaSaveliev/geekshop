@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import json
 import os
 from pathlib import Path
+from django.conf.global_settings import CACHE_MIDDLEWARE_ALIAS, CACHE_MIDDLEWARE_SECONDS, CACHE_MIDDLEWARE_KEY_PREFIX, CACHES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -111,6 +112,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'geekshop.wsgi.application'
+
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 120
+CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211'
+    }
+}
+
+LOW_CACHE = True
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
