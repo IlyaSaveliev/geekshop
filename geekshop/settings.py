@@ -26,7 +26,7 @@ SECRET_KEY = 'j#!c%&_56-!_*s+f+roox!46v+1@nrt)(#a!h)4&6e4)!5=jw2'
 # DEBUG = True
 # ALLOWED_HOSTS = ['127.0.0.1']
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'ordersapp',
     'debug_toolbar',
     'template_profiler_panel',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -160,11 +161,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
+# STATICFILES_DIRS = (
+#    BASE_DIR / 'static',)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -1,0 +1,11 @@
+[0;1;31m●[0m gunicorn.service - gunicorn daemon
+     Loaded: loaded (/etc/systemd/system/gunicorn.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Mon 2021-04-19 18:06:19 MSK; 3s ago
+    Process: 27035 ExecStart=/home/django/geekshop/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/djsngo/geekshop/geekshop.sock geekshop.wsgi [0;1;31m(code=exited, status=203/EXEC)[0m
+   Main PID: 27035 (code=exited, status=203/EXEC)
+
+Apr 19 18:06:19 188-93-210-51.cloudvps.regruhosting.ru systemd[1]: Started gunicorn daemon.
+Apr 19 18:06:19 188-93-210-51.cloudvps.regruhosting.ru systemd[27035]: [0;1;31m[0;1;39m[0;1;31mgunicorn.service: Failed to execute command: No such file or directory[0m
+Apr 19 18:06:19 188-93-210-51.cloudvps.regruhosting.ru systemd[27035]: [0;1;31m[0;1;39m[0;1;31mgunicorn.service: Failed at step EXEC spawning /home/django/geekshop/env/bin/gunicorn: No such file or directory[0m
+Apr 19 18:06:19 188-93-210-51.cloudvps.regruhosting.ru systemd[1]: [0;1;39m[0;1;31m[0;1;39mgunicorn.service: Main process exited, code=exited, status=203/EXEC[0m
+Apr 19 18:06:19 188-93-210-51.cloudvps.regruhosting.ru systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mgunicorn.service: Failed with result 'exit-code'.[0m
