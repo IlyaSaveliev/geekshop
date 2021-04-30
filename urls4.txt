@@ -1,1 +1,8 @@
+http://188.93.210.51/order/update/2/
+http://188.93.210.51/order/update/3/
+http://188.93.210.51/order/update/4/
+http://188.93.210.51/order/update/6/
+http://188.93.210.51/order/update/7/
+http://188.93.210.51/order/update/8/
+http://188.93.210.51/order/update/12/
 http://188.93.210.51/order/update/1/
