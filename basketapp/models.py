@@ -71,8 +71,9 @@ class Basket(models.Model):
         return basket_items_dic
 
     @staticmethod
-#    def get_item(pk):
-#        return Basket.objects.get(pk=pk)
+    def get_item(pk):
+        return Basket.objects.get(pk=pk)
+
     def get_items(user):
           return user.basket.select_related().order_by('product__category')
 

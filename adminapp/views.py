@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from authapp.models import ShopUser
 from django.utils.decorators import method_decorator
 from mainapp.models import ProductCategory, Product
@@ -10,6 +10,11 @@ from authapp.forms import ShopUserRegisterForm
 from adminapp.forms import ProductEditForm
 from adminapp.forms import ProductCategoryEditForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.db import connection
+from django.db.models import F
+
 
 
 class UserCreateView(CreateView):
@@ -89,6 +94,16 @@ class ProductCategoryUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'редактирование категории'
         return context
+
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
+           discount = form.cleaned_data['discount']
+           if discount:
+              print(f'применяется скидка {discount}% к товарам категории {self.object.name}')
+              self.object.product_set.update(price=F('price') * (1 - discount / 100))
+              db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
+
+        return super().form_valid(form)
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):

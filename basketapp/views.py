@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from mainapp.models import Product
 from basketapp.models import Basket
+from django.db.models import F
 
 @login_required
 def basket(request):
@@ -25,8 +26,12 @@ def basket_add(request, pk):
     old_basket_item = Basket.get_product(user=request.user, product=product)
 
     if old_basket_item:
-        old_basket_item[0].quantity += 1
+#        old_basket_item[0].quantity += 1
+        old_basket_item[0].quantity = F('quantity') + 1
         old_basket_item[0].save()
+
+        update_queries = list(filter(lambda x: 'UPDATE' in x['sql'], connection.queries))
+        print(f'query_basket_add: {update_queries}')
     else:
         new_basket_item = Basket(user=request.user, product=product)
         new_basket_item.quantity += 1
