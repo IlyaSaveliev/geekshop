@@ -35,6 +35,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+DOMAIN_NAME = 'http:/localhost:8000'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
